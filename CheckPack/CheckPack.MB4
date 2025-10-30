@@ -1,0 +1,54 @@
+10 M_OUT(0) = 1
+30 WAIT M_IN(1) = 1
+
+// Grap fan
+40 M_OUT(0) = 0
+50 MOV P1
+60 MOV P1, 20
+70 HCLOSE 1
+
+//Check fan
+75 M_OUT(2) = 1
+80 DLY 3
+85 M_OUT(2) = 0
+
+// Place fan inside box
+90 MOV P3
+95 MOV P4
+100 HOPEN 1
+110 MOV P3
+
+// Close flap_1
+120 MOV P2
+130 HCLOSE 1
+140 MOV P8
+150 HOPEN 1
+160 MOV P3
+
+// Close flap_2
+170 MOV P5
+180 HCLOSE 1
+190 MOV P8
+200 HOPEN 1
+210 MOV P3
+
+// Close flap_3
+220 MOV P6
+230 HCLOSE 1
+340 MOV P8
+350 HOPEN 1
+360 MOV P3
+
+// Close flap_4
+370 MOV P7
+380 HCLOSE 1
+390 MOV P8
+400 HOPEN 1
+410 MOV P3
+
+//Reset belt
+420 M_OUT(1) = 1
+430 M_OUT(0) = 1
+440 WAIT M_IN(2) = 1
+450 M_OUT(1) = 0
+460 M_OUT(0) = 0
