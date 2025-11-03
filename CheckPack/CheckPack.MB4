@@ -1,4 +1,7 @@
-10 M_OUT(0) = 1
+// Activate belt with Object
+10 M_OUT(0) = 1 // Exit(Nr.0) set to true
+
+// Wait till input(NR.1) is used
 30 WAIT M_IN(1) = 1
 
 // Grap fan
@@ -7,7 +10,7 @@
 60 MOV P1, 20
 70 HCLOSE 1
 
-//Check fan
+// Check fan
 75 M_OUT(2) = 1
 80 DLY 3
 85 M_OUT(2) = 0
@@ -19,36 +22,36 @@
 110 MOV P3
 
 // Close flap_1
-120 MOV P2
-130 HCLOSE 1
-140 MOV P8
-150 HOPEN 1
-160 MOV P3
+120 MOV P2 // move to Pos. of a flap (only POS changes every time) 
+130 HCLOSE 1 //Close gripper(NR.1)
+140 MOV P8 // Move flap to center of box
+150 HOPEN 1 // Open gripper(NR.1)
+160 MOV P3 // Move back into secure oparating Pos.
 
 // Close flap_2
-170 MOV P5
+170 MOV P5 //P2 --> P5
 180 HCLOSE 1
 190 MOV P8
 200 HOPEN 1
 210 MOV P3
 
 // Close flap_3
-220 MOV P6
+220 MOV P6 // P5 --> P6
 230 HCLOSE 1
 340 MOV P8
 350 HOPEN 1
 360 MOV P3
 
 // Close flap_4
-370 MOV P7
+370 MOV P7 // P6 --> P7
 380 HCLOSE 1
 390 MOV P8
 400 HOPEN 1
 410 MOV P3
 
-//Reset belt
-420 M_OUT(1) = 1
-430 M_OUT(0) = 1
-440 WAIT M_IN(2) = 1
-450 M_OUT(1) = 0
-460 M_OUT(0) = 0
+// Reset belt
+420 M_OUT(1) = 1 // Exit (Nr.1) set to true, "swap direction of belt"
+430 M_OUT(0) = 1 // Exit (Nr.1) set to true, "activate belt"
+440 WAIT M_IN(2) = 1 // Wait till Input(Nr.2) is true, "When plate hase moved to it's originaly position"
+450 M_OUT(1) = 0 // Toggle Exit (Nr.1), "swap direction of belt (again)"
+460 M_OUT(0) = 0 // Toggle Exit (Nr.0), "deactivate belt"
