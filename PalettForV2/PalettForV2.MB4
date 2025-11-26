@@ -1,0 +1,29 @@
+'Define list, counter variable & position variable
+10 DEF PLT 1,P2,P3,P5,P4,3,2,2
+20 DEF POS Position
+30 DEF INTE I
+'Start belt & spawn cube (only once!)
+40 		M_OUT(2)=1 //cube
+50		M_OUT(1)=1 //belt
+'Start loop from 1 to 8
+60 FOR I = 1 TO 6 STEP 1
+'Wait till cube hase reached final destination
+70		WAIT M_IN(0) = 1
+'Reset belt & cube
+80 			M_OUT(2)=0 //cube
+90 			M_OUT(1)=0 //belt
+'Start gripping cube
+100			MOV P1, -50
+110			MOV P1
+'Close Gripper & move forwards
+120 		M_OUT(0)=1
+130 		Position= PLT 1,I
+140			MOV P69
+150 		MOV Position
+'While driving to "Position": start belt & spawn cube
+'to save production time ;)
+160			M_OUT(2)=1 //cube
+170			M_OUT(1)=1 //belt
+180 		M_OUT(0) = 0
+190 		MOV P69
+200 NEXT I
